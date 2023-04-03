@@ -1,0 +1,93 @@
+.conversation-header-container {
+    width          : 100%;
+    height         : 100%;
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+
+    .user-info-container {
+        width      : 70%;
+        height     : 100%;
+        display    : flex;
+        align-items: center;
+        padding    : 0 16px;
+        gap        : 16px;
+
+        .avt-container {
+            width : 50px;
+            height: 50px;
+
+            .avt-img {
+                width        : 100%;
+                height       : 100%;
+                border-radius: 100%;
+            }
+        }
+
+        .name-and-time-container {
+            width             : 100%;
+            height            : 100%;
+            // border    : 1px solid gray;
+            text-align        : start;
+            padding           : 16px 0;
+            display           : flex;
+            flex-direction    : column;
+            // justify-content: center;
+
+
+            .friend-name {
+                // display    : block;
+                font-size  : 16px;
+                font-weight: 900;
+                height     : 50%;
+                margin     : 0;
+                margin-top : 10px;
+            }
+
+            .online-status {
+                // display  : block;
+                font-size: 12px;
+                height   : 50%;
+                margin   : 5px 0;
+            }
+        }
+    }
+
+    .actions-container {
+        width             : 30%;
+        height            : 100%;
+        display           : flex;
+        // border         : 1px solid gray;
+        justify-content   : end;
+        align-items       : center;
+        gap               : 20px;
+        padding-right     : 2rem;
+
+        div {
+            width             : 40px;
+            height            : 40px;
+            // border         : 1px solid gold;
+            display           : flex;
+            justify-content   : center;
+            align-items       : center;
+            cursor            : pointer;
+        }
+
+        div:hover {
+            background-color: #525455;
+            border-radius   : 100%;
+        }
+
+        .search-icon-container {
+            color: #999da3;
+        }
+
+        .phone-icon-container {
+            color: #999da3;
+        }
+
+        .nav-icon-container {
+            color: #999da3;
+        }
+    }
+}

@@ -48,7 +48,7 @@ const Login = () => {
                     </label>
                     <p className="forgot-pass">Forgot password?</p>
                     <button type="button" className="submit" onClick={() => handleLogin()}>Sign In</button>
-                    <button type="button" className="signup" onClick={() => handleClickSignUp()}>Sign Up</button>
+                    <button type="button" className="signup" onClick={() => handleClickSignUp()}>SIGN UP</button>
                 </div>
             </div>
 

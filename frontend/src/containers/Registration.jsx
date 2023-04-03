@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import './Registration.scss'
 import OTPVerification from '../components/OTPVerification'
 import axios from '../utils/axios'
+import { setGlobalState } from '../store'
 
 const Registration = () => {
-    let [verifyOTP, setVerifyOTP] = useState(false)
     let [userName, setUserName] = useState('')
     let [password, setPassword] = useState('')
     let [email, setEmail] = useState('')
@@ -18,7 +18,7 @@ const Registration = () => {
             email: email
         })
         if (data?.errCode === 0) {
-            setVerifyOTP(true)
+            setGlobalState('otpModal', 'open-modal')
         }
     }
     return (
@@ -44,16 +44,13 @@ const Registration = () => {
                         </div>
 
                         <button className="btn btn-register" type="button" onClick={() => handleSignUp()}>Register</button>
-                        <button type="button" className="btn-signup" onClick={() => handleClickSignin()}>Back to Sign Up</button>
-                        {/* <button className="btn btn-login" type="button">Login</button> */}
+                        <button type="button" className="btn-signup" onClick={() => handleClickSignin()}>Back to Sign In</button>
                     </form>
                 </div>
             </div>
-            {verifyOTP &&
-                <div className='otp-container'>
-                    <OTPVerification setVerifyOTP={setVerifyOTP} email={email} />
-                </div>
-            }
+            <div className='otp-container'>
+                <OTPVerification email={email} />
+            </div>
 
         </>
     )

@@ -1,0 +1,99 @@
+.message-typing-container {
+    margin-top     : 18px;
+    width          : 100%;
+    height         : 80%;
+    display        : flex;
+    justify-content: center;
+    gap            : 1rem;
+
+    .left-typing-container {
+        width              : 60%;
+        height             : 80%;
+        // border          : 1px solid aqua;
+        display            : flex;
+        background-color   : #212121;
+        border-radius      : 16px;
+
+        .additional-options-container {
+            width          : 16%;
+            height         : 100%;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+            gap            : 4px;
+
+            div {
+                display        : flex;
+                justify-content: center;
+                align-items    : center;
+                border-radius  : 100%;
+                cursor         : pointer;
+
+                svg {
+                    width : 24px;
+                    height: 24px;
+                }
+            }
+
+            div:hover {
+                background-color: #413939;
+            }
+
+            .icon-symbol-container {
+                width : 40px;
+                height: 40px;
+            }
+
+            .file-attachment-symbol-container {
+                width : 40px;
+                height: 40px;
+            }
+        }
+
+        .typing-container {
+            width         : 84%;
+            height        : 100%;
+            // border     : 1px solid tan;
+            display       : flex;
+            align-items   : center;
+            // border: 1px solid gold;
+
+            .typing-input {
+                margin             : 0;
+                height             : 60%;
+                width              : 97%;
+                outline            : none;
+                background-color   : transparent;
+                border             : none;
+                color              : rgb(228, 224, 224);
+                font-weight        : 400;
+                font-size          : 16px;
+                // font-family     : "Roboto", -apple-system, BlinkMacSystemFont, "Apple Color Emoji", "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+                ;
+            }
+        }
+
+    }
+
+    .right-typing-container {
+        width             : 5%;
+        height            : 80%;
+        // border         : 1px solid khaki;
+        display           : flex;
+        justify-content   : center;
+        align-items       : center;
+
+        .micro-symbol-container {
+            width           : 52px;
+            height          : 52px;
+            border-radius   : 100%;
+            background-color: #212121;
+            // border: 1px solid tan;
+        }
+
+        .micro-symbol-container:hover {
+            background-color: rgb(59, 59, 59);
+            cursor          : pointer;
+        }
+    }
+}

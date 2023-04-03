@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react'
 import './OTPVerification.scss'
 import axios from '../utils/axios'
+import { useGlobalState } from '../store'
 
-const OTPVerification = ({ setVerifyOTP, email }) => {
+const OTPVerification = ({ email }) => {
+    let [modal, setModal] = useGlobalState('otpModal')
     const [otpArray, setOtpArray] = useState(Array(6).fill(''));
     const inputsRef = useRef([]);
-    const [slideDown, setSlideDown] = useState(true)
+    // const [openModal, setOpenModal] = useState(true)
     const [timeCounter, setTimeCounter] = useState('2:00');
 
     const handleOnchangeOTP = (e, index) => {
@@ -28,8 +30,8 @@ const OTPVerification = ({ setVerifyOTP, email }) => {
     };
 
     const handleCloseModal = () => {
-        // setSlideDown(false)
-        setVerifyOTP(false)
+        setModal('close-modal')
+        // setVerifyOTP(false)
     }
 
     useEffect(() => {
@@ -95,7 +97,7 @@ const OTPVerification = ({ setVerifyOTP, email }) => {
                 })
                 if (data?.errCode === 0) {
                     window.location.href = '/sign-in'
-                    setVerifyOTP(false)
+                    setModal('close-modal')
                 } else {
                     console.log(data.errMessage)
                 }
@@ -108,8 +110,9 @@ const OTPVerification = ({ setVerifyOTP, email }) => {
         }
     }
     return (
-        <div className='OTPVerification-container'>
-            <div className={`container ${slideDown ? 'slide-down' : 'slide-up'}`}>
+        <div className={`OTPVerification-container ${modal}`}>
+            {/* ${slideDown ? 'slide-down' : 'slide-up'} */}
+            <div className={`container `}>
                 <button type="button" className="close-modal-btn" onClick={() => handleCloseModal()}>
                     <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 352 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
                     </path>

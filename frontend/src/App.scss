@@ -1,3 +1,7 @@
+:root {
+  --primary-modal-background: #151c25;
+}
+
 .App {
   text-align         : center;
   background-color   : #282c34;
@@ -44,4 +48,50 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.open-modal {
+  animation          : open-modal 0.3s ease-in-out forwards;
+  // background-color: bisque;
+
+  @keyframes open-modal {
+    from {
+      background-color: rgba(0, 0, 0, 0) !important;
+      transform       : scale(0);
+    }
+
+    to {
+      background-color: rgba(0, 0, 0, 0.4) !important;
+      transform       : scale(1);
+    }
+  }
+}
+
+.close-modal {
+  animation: close-modal 0.3s ease-in-out forwards;
+
+  @keyframes close-modal {
+    from {
+      background-color: rgba(0, 0, 0, 0.4) !important;
+      transform       : scale(1);
+    }
+
+    to {
+      background-color: rgba(0, 0, 0, 0) !important;
+      transform       : scale(0);
+    }
+  }
+}
+
+.hidden-modal {
+  display: none !important;
+}
+
+.global-modal-container {
+  width           : 100vw;
+  height          : 100vh;
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  background-color: rgba(0, 0, 0, 0.8);
 }

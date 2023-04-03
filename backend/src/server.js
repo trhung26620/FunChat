@@ -3,6 +3,7 @@ import express from 'express'
 import configExpressServer from './config/express-server'
 import { parsingResponse, corsProcessing } from './middleware/common'
 import unauthenAPI from './route/unauthenAPI'
+import authenAPI from './route/authenAPI'
 import initSocket from './config/socket-config'
 import connectMongoDB from './config/mongo-connection'
 const app = express()
@@ -62,5 +63,7 @@ parsingResponse(app)
 
 corsProcessing(app)
 unauthenAPI(app)
+authenAPI(app)
+// initAuthRoute(app)
 // testRoute(app)
 

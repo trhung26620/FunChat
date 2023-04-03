@@ -1,0 +1,36 @@
+.message-container {
+    max-width       : 460px;
+    min-width       : 100px;
+    display         : inline-block;
+    background-color: rgb(100, 81, 60);
+    border-radius   : 20px;
+    text-align      : start;
+    padding         : 4px 12px;
+
+    .sender-name {
+        font-size  : 15px;
+        font-weight: 500;
+        margin     : 0;
+        color      : rgb(211, 149, 24);
+    }
+
+    .message-content {
+        font-size: 14px;
+        margin   : 0;
+        color    : rgb(226, 230, 235);
+    }
+
+    .send-time {
+        text-align   : end;
+        font-size    : 10px;
+        margin       : 0;
+        margin-right : 4px;
+        margin-bottom: 2px;
+        color        : rgb(202, 202, 202);
+        font-weight  : 500;
+    }
+}
+
+.owner-bg {
+    background-color: #474040
+}

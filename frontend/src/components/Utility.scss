@@ -1,0 +1,117 @@
+.utility-container {
+    width : 100%;
+    height: 100%;
+
+    hr {
+        margin: 0
+    }
+
+    .top-container {
+        width      : 100%;
+        height     : 50%;
+        display    : flex;
+        align-items: center;
+        gap        : 16px;
+
+        .my-avt-container {
+            width        : 46px;
+            height       : 46px;
+            cursor       : pointer;
+            outline      : 2px solid rgb(118, 104, 122);
+            border-radius: 100%;
+            overflow     : hidden;
+
+            .my-avt {
+                width : 100%;
+                height: 100%;
+            }
+        }
+
+        .my-avt-container:hover {
+            outline: 3px solid rgb(115, 113, 116);
+        }
+
+        .search-container {
+            // border          : 1px solid rgb(112, 110, 110);
+            width           : 80%;
+            height          : 70%;
+            border-radius   : 16px;
+            display         : flex;
+            align-items     : center;
+            justify-content : center;
+            background-color: rgb(47, 54, 54);
+
+            .search-input {
+                height          : 80%;
+                width           : 90%;
+                border          : none;
+                outline         : none;
+                font-size       : 16px;
+                background-color: transparent;
+                color           : rgb(199, 195, 195);
+
+            }
+
+            .search-input::placeholder {
+                color: rgb(199, 195, 195);
+            }
+        }
+    }
+
+    .bottom-container {
+        width : 100%;
+        height: 50%;
+
+        .symbol-container {
+            height         : 100%;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+            gap            : 10px;
+
+            span {
+                height         : 33px;
+                width          : 33px;
+                color          : #999da3;
+                border-radius  : 100%;
+                text-align     : center;
+                display        : inline-block;
+                display        : flex;
+                align-items    : center;
+                justify-content: center;
+                cursor         : pointer;
+            }
+
+            span:hover {
+                background-color: #525455;
+            }
+
+            .bell-symbol {
+                border: 2px solid #999da3;
+
+            }
+
+            .group-symbol {
+                color : #999da3;
+                height: 40px;
+                width : 40px;
+            }
+
+            .add-friend-symbol {
+                height: 33px;
+                width : 33px;
+                border: 2px solid #999da3;
+
+                svg {
+                    width : 20px;
+                    height: 20px;
+                }
+            }
+
+            .setting-symbol {
+                border: 2px solid #999da3;
+            }
+        }
+
+    }
+}

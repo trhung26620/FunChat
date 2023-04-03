@@ -94,16 +94,22 @@ $color-primary: #d4af7a;
         color             : white;
         background        : $color-primary;
         transition        : 0.3s;
-        border            : 1px solid #967a53;
+        border            : 1px solid #5e4a2f;
 
-        &:hover {
-            background: darken($color-primary, 5%);
-        }
+        // &:hover {
+        //     background: darken($color-primary, 5%);
+        // }
     }
 
-    // .btn-login {
-    //     background: #bba88e !important;
-    // }
+    .btn-register {
+        background: #57452c !important;
+        cursor    : pointer;
+    }
+
+    .btn-register:hover {
+        background-color: #644e2e !important
+    }
+
     .btn-signup {
         display         : block;
         margin          : 0 auto;

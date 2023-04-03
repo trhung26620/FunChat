@@ -1,0 +1,36 @@
+.conversation-container {
+    // margin-top    : 10px;
+    display          : flex;
+    flex-direction   : column;
+    gap              : 8px;
+    height           : 100%;
+    width            : 100%;
+    align-items      : center;
+    // padding       : 0 16px;
+
+    // overflow-y    : auto;
+    // overflow-x    : hidden;
+    .message-wrapper {
+        width             : 64%;
+        // border         : 1px solid aquamarine;
+        display           : flex;
+        justify-content   : start;
+
+        .avt-container {
+            width        : 46px;
+            height       : 46px;
+            border-radius: 100%;
+            overflow     : hidden;
+            margin-right : 10px;
+        }
+
+        .avt-img {
+            width : 100%;
+            height: 100%;
+        }
+    }
+
+    .message-owner {
+        justify-content: end;
+    }
+}

@@ -1,53 +1,17 @@
 .OTPVerification-container {
-
-
     position        : fixed;
     top             : 0;
     left            : 0;
     width           : 100vw;
     height          : 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.4);
     display         : flex;
     justify-content : center;
     padding-top     : 20%;
 
-    .slide-up {
-        animation: slide-up 0.5s ease-in-out forwards;
 
-        @keyframes slide-up {
-            from {
-                opacity  : 1;
-                transform: translateY(-50%);
-            }
-
-            to {
-                opacity  : 0;
-                transform: translateY(-100%);
-            }
-        }
-    }
-
-    .slide-down {
-        animation: slide-down 0.5s ease-in-out forwards;
-
-        @keyframes slide-down {
-            from {
-                opacity  : 0;
-                transform: translateY(-100%);
-            }
-
-            to {
-                opacity  : 1;
-                transform: translateY(-50%);
-            }
-        }
-    }
 
     .container {
-        // padding: 0 20px !important;
-
-        // width    : 600px;
-        // height: 600px;
         background-color: #151c25;
         box-shadow      : 0px 8px 25px 5px #e32970;
         height          : 220px;
@@ -70,13 +34,8 @@
         }
     }
 
-    // padding: 0 10px;
 
     .bgWhite {
-        // background      : rgb(163, 13, 13);
-        // background-color: #151c25;
-        // background-color: rgba(0, 0, 255, 1);
-        // border     : 1px solid green;
         padding    : 0px 20px;
         padding-top: 10px;
         width      : 360px;

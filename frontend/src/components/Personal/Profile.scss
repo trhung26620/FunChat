@@ -1,0 +1,86 @@
+.profile-container {
+    display        : flex;
+    justify-content: center;
+
+    .profile-wrapper {
+        margin-top      : 10%;
+        border-radius   : 12px;
+        padding         : 12px 12px;
+        width           : 400px;
+        height          : 140px;
+        background-color: var(--primary-modal-background);
+        box-shadow      : 0px 8px 25px 5px #e32970;
+        position        : relative;
+
+
+        .header-profile-container {
+            display        : flex;
+            width          : 100%;
+            height         : 66px;
+            border-bottom  : 1px solid #b8396a;
+            justify-content: space-between;
+
+            .avt-container {
+                // margin-left  : 16px;
+                width        : 54px;
+                height       : 54px;
+                border-radius: 100%;
+                overflow     : hidden;
+                border       : 2px solid #222021;
+
+                .my-avt-img {
+                    width : 100%;
+                    height: 100%;
+                }
+            }
+
+            .name-container {
+                p {
+                    font-size  : 26px;
+                    font-weight: 600;
+                    color      : rgb(163, 163, 162);
+                    margin     : 0;
+                    margin-top : 10px;
+                }
+            }
+
+            .close-btn-container {
+                font-size: 16px;
+            }
+        }
+
+
+
+        .body-container {
+            width          : 100%;
+            height         : calc(100% - 66px);
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+
+            .id-info-container {
+                width           : 94%;
+                height          : 58%;
+                background-color: #33353a;
+                border-radius   : 14px;
+                cursor          : pointer;
+
+                .id-info {
+                    font-size: 26px;
+                    margin   : 0;
+                    color    : rgb(198, 198, 199);
+                }
+
+            }
+
+            .copied-text {
+                font-size  : 12px;
+                margin     : 0;
+                position   : absolute;
+                bottom     : 6px;
+                color      : #c6cad1;
+                font-weight: 600;
+            }
+        }
+    }
+}
