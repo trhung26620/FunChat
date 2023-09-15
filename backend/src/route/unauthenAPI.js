@@ -9,6 +9,7 @@ const unauthenAPI = (app) => {
     router.post('/login', unauthenController.loginAccount)
     router.post('/OTPVerification', unauthenController.verifyOTP)
     router.post('/resendOTP', unauthenController.resendOTP)
+    router.get('/test', unauthenController.test)
     app.use('/', router);
 };
 export default unauthenAPI;

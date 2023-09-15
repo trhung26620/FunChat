@@ -1,4 +1,5 @@
 const OTP = require('otp');
+import handleError from '../config/errCode'
 const User = require('../model/User')
 import bcrypt from 'bcryptjs';
 import { sendOTPViaEmail } from './emailService'
@@ -77,7 +78,6 @@ const registerAccount = (data) => {
                     let hashPasswordFromBcrypt = await hashUserPassword(data.password);
                     await User.create({
                         name: data.username,
-                        avatarUrl: "",
                         email: data.email,
                         password: hashPasswordFromBcrypt,
                         friends: [],
@@ -93,22 +93,13 @@ const registerAccount = (data) => {
                         otp: code,
                         username: data.username
                     })
-                    resolve({
-                        errCode: 0,
-                        message: 'success'
-                    })
+                    resolve(handleError(0))
                 } else {
-                    resolve({
-                        errCode: 3,
-                        errMessage: 'Email is already existing'
-                    })
+                    resolve(handleError(3))
                 }
 
             } else {
-                resolve({
-                    errCode: 2,
-                    errMessage: 'Missing required parameters'
-                })
+                resolve(handleError(2))
             }
         } catch (error) {
             reject(error);
@@ -128,27 +119,15 @@ const verifyOTP = (data) => {
                     if (currentTime <= otpExpire && otpCode === data.code) {
                         user.otpVerification = true
                         await user.save()
-                        resolve({
-                            errCode: 0,
-                            message: 'success'
-                        })
+                        resolve(handleError(0))
                     } else {
-                        resolve({
-                            errCode: 5,
-                            errMessage: 'OTP is invalid or expired'
-                        })
+                        resolve(handleError(5))
                     }
                 } else {
-                    resolve({
-                        errCode: 5,
-                        errMessage: 'OTP is invalid or expired'
-                    })
+                    resolve(handleError(5))
                 }
             } else {
-                resolve({
-                    errCode: 2,
-                    errMessage: 'Missing required parameters'
-                })
+                resolve(handleError(2))
             }
         } catch (error) {
             reject(error);
@@ -167,10 +146,10 @@ const loginAccount = (data) => {
                         let token = await jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
                             expiresIn: 86400 // 24 hours
                         });
-                        console.log(user.id)
+                        user.session = token;
+                        await user.save();
                         resolve({
-                            errCode: 0,
-                            message: 'success',
+                            ...handleError(0),
                             data: {
                                 id: user.id,
                                 token: token,
@@ -180,22 +159,13 @@ const loginAccount = (data) => {
                             }
                         })
                     } else {
-                        resolve({
-                            errCode: 4,
-                            errMessage: 'Incorrect email or password'
-                        })
+                        resolve(handleError(4))
                     }
                 } else {
-                    resolve({
-                        errCode: 4,
-                        errMessage: 'Incorrect email or password'
-                    })
+                    resolve(handleError(4))
                 }
             } else {
-                resolve({
-                    errCode: 2,
-                    errMessage: 'Missing required parameters'
-                })
+                resolve(handleError(2))
             }
         } catch (error) {
             reject(error);
@@ -223,21 +193,12 @@ const resendOTP = (data) => {
                         otp: code,
                         username: user.name
                     })
-                    resolve({
-                        errCode: 0,
-                        message: 'success'
-                    })
+                    resolve(handleError(0))
                 } else {
-                    resolve({
-                        errCode: 6,
-                        errMessage: 'Account is existed or current OTP is not expired'
-                    })
+                    resolve(handleError(6))
                 }
             } else {
-                resolve({
-                    errCode: 2,
-                    errMessage: 'Missing required parameters'
-                })
+                resolve(handleError(2))
             }
         } catch (error) {
             reject(error);

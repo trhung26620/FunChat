@@ -13,12 +13,17 @@ let verifyToken = async (req, res, next) => {
 
     jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
         if (err) {
+            if (err.message === "jwt expired") {
+                return res.status(401).send({
+                    message: "Token is expire"
+                });
+            }
             return res.status(401).send({
                 message: "Unauthorized!"
             });
         }
         let user = await User.findById(decoded.id);
-        if (user) {
+        if (user && user.session === token) {
             req.userId = user.id;
             next();
         } else {

@@ -4,21 +4,27 @@ import configExpressServer from './config/express-server'
 import { parsingResponse, corsProcessing } from './middleware/common'
 import unauthenAPI from './route/unauthenAPI'
 import authenAPI from './route/authenAPI'
-import initSocket from './config/socket-config'
 import connectMongoDB from './config/mongo-connection'
-const app = express()
-const http = require('http').Server(app);
-
-// const http = require("http");
-// const server = http.createServer(http);
-const io = initSocket(http)
-app.set('socketio', io);
-// import db from './models/index'
-
+import { initializeSocket } from './service/socket'
 const path = require('path')
+const app = express()
+// const http = require('http').Server(app);
+const http = require('http')
+const server = http.createServer(app)
+const { Server } = require("socket.io");
+const io = new Server(server, {
+    cors: {
+        origin: process.env.URL_REACT,
+    },
+});
 
+app.set('io', io);
+initializeSocket(io)
 
 const PORT = process.env.PORT || 3000
+server.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
+});
 
 // app.listen(PORT, (error) => {
 //     if (error) {
@@ -27,9 +33,7 @@ const PORT = process.env.PORT || 3000
 //         console.log(`Listening on port ${PORT}`)
 //     }
 // });
-http.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
-});
+
 
 connectMongoDB()
 
@@ -64,6 +68,3 @@ parsingResponse(app)
 corsProcessing(app)
 unauthenAPI(app)
 authenAPI(app)
-// initAuthRoute(app)
-// testRoute(app)
-
