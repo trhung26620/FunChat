@@ -1,11 +1,16 @@
 .conversation-container {
+    .empty-conversation {
+        color: rgb(154, 158, 158);
+    }
+
     // margin-top    : 10px;
-    display          : flex;
-    flex-direction   : column;
-    gap              : 8px;
-    height           : 100%;
-    width            : 100%;
-    align-items      : center;
+    display             : flex;
+    flex-direction      : column;
+    gap                 : 8px;
+    height              : 100%;
+    width               : 100%;
+    align-items         : center;
+    // padding          : 12px 0;
     // padding       : 0 16px;
 
     // overflow-y    : auto;
@@ -30,7 +35,15 @@
         }
     }
 
+    .message-wrapper:first-child {
+        margin-top: 12px;
+    }
+
     .message-owner {
         justify-content: end;
     }
 }
+
+// .conversation-container:first-child {
+//     padding-top: 12px;
+// }

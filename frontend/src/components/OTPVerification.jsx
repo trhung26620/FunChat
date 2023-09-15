@@ -10,6 +10,10 @@ const OTPVerification = ({ email }) => {
     // const [openModal, setOpenModal] = useState(true)
     const [timeCounter, setTimeCounter] = useState('2:00');
 
+    useEffect(() => {
+        setTimeCounter('2:00')
+    }, [modal])
+
     const handleOnchangeOTP = (e, index) => {
         e.target.value = e.target.value.replace(/[^0-9]/g, '');
         let currentOtpArr = [...otpArray]
@@ -96,7 +100,7 @@ const OTPVerification = ({ email }) => {
                     code: otpStr,
                 })
                 if (data?.errCode === 0) {
-                    window.location.href = '/sign-in'
+                    window.location.href = '/login'
                     setModal('close-modal')
                 } else {
                     console.log(data.errMessage)

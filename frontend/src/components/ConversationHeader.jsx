@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './ConversationHeader.scss'
+import { useGlobalState } from '../store'
+import { format } from 'timeago.js';
 
 const ConversationHeader = () => {
+    const [conversationInfo, setConversationInfo] = useGlobalState('selectedConservation')
+
     return (
         <div className='conversation-header-container'>
             <div className="user-info-container">
                 <div className="avt-container">
-                    <img src="https://i.pinimg.com/736x/76/07/5c/76075c11bfe509ee9a11d9baa991c40d.jpg" alt="" className="avt-img" />
+                    <img src={conversationInfo.avatarUrl} alt="" className="avt-img" />
                 </div>
                 <div className="name-and-time-container">
                     <p className="friend-name">
-                        Chi Huynh
+                        {conversationInfo.name}
                     </p>
                     <p className="online-status">
-                        last seen 1 hour ago
+                        {conversationInfo.onlineStatus === true ? <><span className='online-light'></span> online</> : <><span className='offline-light'></span> {format(conversationInfo.onlineStatus)}</>}
                     </p>
                 </div>
             </div>

@@ -1,0 +1,100 @@
+.update-avatar-modal-container {
+    width           : 100vw;
+    height          : 100vh;
+    position        : fixed;
+    top             : 0;
+    left            : 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display         : flex;
+    flex-direction  : column;
+    align-items     : center;
+
+    // background-color: antiquewhite;
+    .modal-wrapper {
+        background-color   : #151c25;
+        width              : 600px;
+        min-height         : 180px;
+        // max-height      : 300px;
+        margin-top         : 20vh;
+        border-radius      : 16px;
+        box-shadow         : 0px 8px 25px 5px #e32970;
+
+        .header-modal-container {
+            display        : flex;
+            justify-content: space-between;
+            align-items    : start;
+            color          : #7d838f;
+            padding        : 12px 14px;
+
+            .modal-title {
+                margin     : 0;
+                font-size  : 16px;
+                font-weight: 600;
+            }
+
+            .close-btn-container {
+                font-size: 16px;
+            }
+        }
+
+        .body-modal-container {
+            width          : 100%;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+            flex-direction : column;
+
+            .preview-img-container {
+                margin-top: 14px;
+
+                img {
+                    max-width : 400px;
+                    max-height: 240px;
+                    outline   : 1px solid #413f3f;
+                    box-shadow: 0 4px 8px 0 rgba(212, 209, 209, 0.2), 0 6px 20px 0 rgba(44, 43, 43, 0.19);
+                }
+            }
+        }
+
+        .footer-container {
+            margin-top   : 8px;
+            margin-bottom: 14px;
+
+            .button-container {
+                margin-top     : 14px;
+                display        : flex;
+                justify-content: center;
+                gap            : 16px;
+
+                button {
+                    width           : 100px;
+                    height          : 40px;
+                    background-color: #ca2564;
+                    border          : none;
+                    border-radius   : 8px;
+                    cursor          : pointer;
+                    color           : rgb(214, 206, 206);
+                    font-weight     : 600;
+                    font-size       : 14px;
+                    padding         : 0;
+                }
+
+                button:hover {
+                    background-color: #853252;
+                }
+
+                .upload-btn {
+                    label {
+                        width          : 100%;
+                        height         : 100%;
+                        display        : block;
+                        display        : flex;
+                        justify-content: center;
+                        align-items    : center;
+                    }
+                }
+            }
+
+        }
+    }
+}

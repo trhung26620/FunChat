@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
 import './FindFriendModal.scss'
 import { useGlobalState } from '../../store';
 import axios from '../../utils/axios';
@@ -10,6 +8,7 @@ const FindFriendModal = () => {
     const [modal, setModal] = useGlobalState('addFriendModal')
     const [friendId, setFriendId] = useState('')
     const [friendData, setFriendData] = useState({});
+    const [friendReqStatus, setFriendReqStatus] = useState('NOT-REQUEST')
 
     const handleFindFriend = async () => {
         if (friendId) {
@@ -23,6 +22,7 @@ const FindFriendModal = () => {
                 }
                 const { status, data } = await axios.get(`/find-friend?friendId=${friendIdTemp}`)
                 if (status === 200 && data?.errCode === 0) {
+                    setFriendReqStatus(data?.data?.friendReqStatus)
                     setFriendData(data?.data)
                 } else {
                     console.log(data?.errMessage)
@@ -40,7 +40,68 @@ const FindFriendModal = () => {
         setFriendId('')
         setFriendData({})
         setModal('close-modal')
+        setFriendReqStatus('NOT-REQUEST')
     }
+
+    const handleAddFriend = async () => {
+        if (friendData && friendData.id) {
+            try {
+                let currentUserId = getCurrentUserId()
+                if (currentUserId === friendData.id) {
+                    console.log('This is your ID');
+                    return
+                }
+                const { status, data } = await axios.post('/add-friend', { friendId: friendData.id })
+                if (status === 200 && data?.errCode === 0) {
+                    setFriendReqStatus('PENDING')
+                } else {
+                    console.log(data?.errMessage)
+                }
+            } catch (error) {
+                console.error(error)
+            }
+        } else {
+            console.log('Something went wrong')
+        }
+    }
+
+    const handleRejectFriendRequest = async () => {
+        if (friendData && friendData.id) {
+            try {
+                const { status, data } = await axios.post('/reject-friend', { friendId: friendData.id })
+                if (status === 200 && data?.errCode === 0) {
+                    console.log('Reject successfully')
+                    setFriendReqStatus('REJECTED')
+                } else {
+                    console.log(data?.errMessage)
+                }
+            } catch (error) {
+                console.error(error)
+            }
+        } else {
+            console.log('Something went wrong')
+        }
+    }
+
+    const handleApproveFriendRequest = async () => {
+        if (friendData && friendData.id) {
+            try {
+                const { status, data } = await axios.post('/approve-friend', { friendId: friendData.id })
+                if (status === 200 && data?.errCode === 0) {
+                    console.log('Approve successfully')
+                    setFriendReqStatus('APPROVED')
+                    window.location.reload()
+                } else {
+                    console.log(data?.errMessage)
+                }
+            } catch (error) {
+                console.error(error)
+            }
+        } else {
+            console.log('Something went wrong')
+        }
+    }
+
     return (
         <div className={`find-friend-modal-container ${modal}`}>
             <div className="modal-wrapper slide-down">
@@ -64,9 +125,31 @@ const FindFriendModal = () => {
                             <div className="friend-name-container">
                                 <span className='friend-name'>{friendData.name}</span>
                             </div>
-                            <button className="add-btn">
-                                Add
-                            </button>
+                            {friendReqStatus === 'PENDING'
+                                ?
+                                <button className="add-btn">
+                                    Requested
+                                </button>
+                                :
+                                friendReqStatus === 'REJECTED' || friendReqStatus === 'NOT-REQUEST'
+                                    ?
+                                    <button className="add-btn" onClick={() => handleAddFriend()}>
+                                        Add
+                                    </button>
+                                    :
+                                    friendReqStatus === 'WAIT-FOR-APPROVE'
+                                        ? <>
+                                            <button className="add-btn" onClick={() => { handleApproveFriendRequest() }}>
+                                                Approve
+                                            </button>
+                                            <button className="add-btn" onClick={() => { handleRejectFriendRequest() }}>
+                                                Reject
+                                            </button>
+                                        </>
+                                        :
+                                        ''
+                            }
+
                         </div>
                     }
                 </div>

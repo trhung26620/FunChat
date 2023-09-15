@@ -1,0 +1,44 @@
+.setting-nav-container {
+    width           : 154px;
+    background-color: rgb(68, 67, 67);
+    border-radius   : 14px;
+    position        : absolute;
+    top             : 79%;
+    left            : 51%;
+    box-shadow      : 0px 1px 8px 1px #6d6b6b;
+
+    .setting-option {
+        display           : flex;
+        justify-content   : center;
+        gap               : 8px;
+        align-items       : center;
+        cursor            : pointer;
+        // border-top     : 1px solid #999da3;
+
+        .option-icon-container {
+            height     : 40px;
+            display    : flex;
+            align-items: center;
+        }
+
+        span {
+            font-size  : 16px;
+            font-weight: 600;
+            color      : #d9dbdf;
+        }
+    }
+
+    .setting-option:hover {
+        background-color: rgb(51, 50, 50);
+    }
+
+    .setting-option:first-child {
+        border-top   : none;
+        border-radius: 14px 14px 0 0;
+    }
+
+    .setting-option:last-child {
+        border-bottom-left-radius : 14px;
+        border-bottom-right-radius: 14px;
+    }
+}

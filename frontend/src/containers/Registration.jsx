@@ -9,7 +9,7 @@ const Registration = () => {
     let [password, setPassword] = useState('')
     let [email, setEmail] = useState('')
     const handleClickSignin = () => {
-        document.location.href = '/sign-in'
+        document.location.href = '/login'
     }
     const handleSignUp = async () => {
         const { data } = await axios.post('/registration', {

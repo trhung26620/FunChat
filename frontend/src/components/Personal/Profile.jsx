@@ -6,19 +6,15 @@ function Profile() {
     const [modal, setModal] = useGlobalState('profileModal');
     const [copied, setCopied] = useState(false);
     const [userId, setUserId] = useState("#642927608bc2f40263a0066d");
-    const [user, setUser] = useState({})
+    const [user, setUser] = useGlobalState('currentUser')
     const handleCopyClick = () => {
         navigator.clipboard.writeText(userId);
         setCopied(true);
         setTimeout(() => setCopied(false), 1500);
     }
     useEffect(() => {
-        let storedUserId = localStorage.getItem('user');
-        if (storedUserId) {
-            setUser(JSON.parse(storedUserId));
-            setUserId('#' + JSON.parse(storedUserId)?.id)
-        }
-    }, [])
+        setUserId('#' + user.id)
+    }, [user])
     return (
         <div className={`profile-container global-modal-container ${modal}`}>
             <div className="profile-wrapper">

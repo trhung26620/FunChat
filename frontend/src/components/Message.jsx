@@ -1,13 +1,7 @@
 import React, { useState } from 'react'
 import './Message.scss'
 
-const Message = () => {
-    const [messageData, setMessageData] = useState({
-        name: 'Xuan Huy',
-        content: 'Hi anh/chị. Em thấy có bài đăng về tuyển dụng blockchain devloper. nếu bên mình có cần vị trí intern thì mong anh/chị bỏ chút thời gian qua xem CV e xem có phù hợp không ạ, em cảm ơn',
-        time: '13:48',
-        owner: false
-    });
+const Message = ({ messageData }) => {
     return (
         <div className={`message-container ${messageData.owner ? 'owner-bg' : ''}`} >
             {!messageData.owner &&

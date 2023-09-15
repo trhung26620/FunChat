@@ -16,7 +16,7 @@
         width              : 600px;
         min-height         : 180px;
         // max-height      : 300px;
-        margin-top         : 20%;
+        margin-top         : 20vh;
         border-radius      : 16px;
         box-shadow         : 0px 8px 25px 5px #e32970;
 
@@ -67,17 +67,18 @@
             }
 
             .friend-result-container {
-                min-width          : 50%;
+                min-width          : 40%;
                 max-width          : 70%;
                 min-height         : 60px;
                 // max-height      : 800px;
                 display            : flex;
-                justify-content    : space-between;
+                justify-content    : center;
                 align-items        : center;
                 margin-top         : 16px;
                 background-color   : #1f2937;
                 padding            : 0 8px;
                 border-radius      : 14px;
+                gap                : 10px;
 
                 .avt-friend-container {
                     width        : 50px;

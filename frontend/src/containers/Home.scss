@@ -13,14 +13,16 @@
         // border      : 1px solid olivedrab;
 
         .left-header-container {
-            width    : 100%;
-            height   : 10%;
+            width           : 100%;
+            // min-height   : 10%;
             // border: 1px solid yellow;
         }
 
         .left-body-container {
-            width    : 100%;
-            height   : 90%;
+            width           : 98%;
+            height          : 90%;
+            // padding-right: 12px;
+
             // border: 1px solid darkblue;
         }
     }
@@ -29,6 +31,7 @@
         border-left: 1px solid rgb(66, 66, 66);
         width      : 75%;
         height     : 100%;
+        position   : relative;
         // border: 1px solid rebeccapurple;
 
         hr {
@@ -36,19 +39,39 @@
         }
 
         .right-header-container {
-            width    : 100%;
-            height   : 5%;
+            width             : 100%;
+            height            : 100px;
+            position          : absolute;
+            top               : 0;
+            // display: flex;
+            // justify-content: center;
             // border: 1px solid hotpink;
+            // border-bottom: 1px solid #dddada;
+            background-color  : #1c1a1a;
+            // z-index           : 99;
         }
 
         .right-body-container {
-            width        : 100%;
-            height       : calc(100% - 5% - 8%);
+            // margin-top: 10vh;
+            // border-top: 1px solid #dddada;
+            position        : absolute;
+            top             : 100px;
+            // bottom          : 10vh;
+            width           : 100%;
+            height: calc(100vh - 100px - 90px);
+            // height       : calc(100vh - 10vh - 10vh);
             // padding   : 10px 0px 28px 5px;
-            overflow-y   : auto;
-            overflow-x   : hidden;
-            border-bottom: 1px solid #dddada;
+            overflow-y      : auto;
+            overflow-x      : hidden;
+            // border-bottom: 1px solid #dddada;
+
             // border: 1px solid aquamarine;
+            .no-conversation-selected {
+                display    : block;
+                margin-top : 10%;
+                color      : #babcc0;
+                font-weight: 600;
+            }
         }
 
         /* Define the scrollbar width and colors */
@@ -74,8 +97,14 @@
         }
 
         .right-bottom-container {
-            width            : 100%;
-            height           : 8%;
+            width               : 100%;
+            // height           : 10vh;
+            min-height          : 100px;
+            // background-color: aqua;
+            // border-top: 1px solid white;
+            position            : absolute;
+            bottom              : 0;
+            // z-index             : 10;
             // margin-top    : 10px;
             // padding-bottom: 12px;
 

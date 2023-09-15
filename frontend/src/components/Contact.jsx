@@ -1,23 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Contact.scss'
+import { shortenString, formatDate } from '../utils/string-handle'
+import { getCurrentUserId } from '../utils/fetch-local-storage'
+import { setGlobalState } from '../store'
 
-const Contact = () => {
+const Contact = ({ contactData }) => {
+    const [currentUserId, setCurrentUserId] = useState('')
+    useEffect(() => {
+        let id = getCurrentUserId()
+        setCurrentUserId(id)
+    }, [])
+
+    const handleOnclickConservation = () => {
+        setGlobalState('selectedConservation', contactData)
+    }
+
     return (
         <div>
-            <div className='contact-container'>
+            <div onClick={() => handleOnclickConservation()} className='contact-container'>
                 <div className='avt-container'>
-                    <img src='https://i.pinimg.com/736x/76/07/5c/76075c11bfe509ee9a11d9baa991c40d.jpg' className='avt-img'></img>
+                    <img src={contactData.avatarUrl} className='avt-img'></img>
                 </div>
                 <div className='content-contact-container'>
                     <div className='header-contact'>
-                        <p className="friend-name">Chi Huynh</p>
+                        <p className="friend-name">{contactData.name}</p>
                         <p className="last-message-time">
-                            3/8/2023
+                            {formatDate(contactData.lastMessTime)}
                         </p>
                     </div>
                     <div className='body-contact'>
                         <p className="last-message-content">
-                            kì vậy =)) oke a để hồm nào e chỉnh tóc tai đi làm 1 tấm lịch sự
+                            {currentUserId && currentUserId === contactData.from ? <b>You: </b> : ''}
+                            {shortenString(contactData.lastMessage, 90)}
                         </p>
                     </div>
                 </div>

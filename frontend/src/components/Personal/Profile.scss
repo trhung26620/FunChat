@@ -64,6 +64,9 @@
                 background-color: #33353a;
                 border-radius   : 14px;
                 cursor          : pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 .id-info {
                     font-size: 26px;
